@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>strokeStyle绘制笔触路径</title>
+</head>
+<h3>笔触绘制</h3>
+	<p>
+		<strong>strokeStyle(x0,y0,x1,y1)</strong>用于绘制笔触<br>
+		x0	渐变开始点的 x 坐标<br>
+		y0	渐变开始点的 y 坐标<br>
+		x1	渐变结束点的 x 坐标<br>
+		y1	渐变结束点的 y 坐标<br>
+	</p>
+	
+	<p> strokeStyle有三个值可供选择【 strokeStyle=color|gradient|pattern 】颜色，渐变,patter对象</p>
+	<h3>笔触，颜色为单一色调</h3>
+	<p> <strong>strokeStyle = "#f60"</strong> 属性是给绘制对象填充#f60颜色,默认值为#000000</p>
+	<canvas id="canvas1"></canvas>
+	<h3>笔触，颜色为渐变</h3>
+	<p>createLinearGradient() 方法创建线性的渐变对象。</p>
+	<p>
+		<strong>createLinearGradient(x0,y0,x1,y1)</strong><br>
+		x0	渐变开始点的 x 坐标<br>
+		y0	渐变开始点的 y 坐标<br>
+		x1	渐变结束点的 x 坐标<br>
+		y1	渐变结束点的 y 坐标<br>
+	</p>
+	<canvas id="canvas2"></canvas>
+</body>
+</html>
+<script>
+	//js获取画布对象，声明2d绘画
+	var canvas1 = document.getElementById('canvas1'); 
+	var ctx1 = canvas1.getContext('2d');
+	var canvas2=document.getElementById("canvas2");
+	var ctx2=canvas2.getContext("2d");
+	
+
+
+	// 绘制笔触，填充单一颜色
+	ctx1.lineWidth=5;			
+	ctx1.strokeStyle = "#f60";
+	ctx1.strokeRect(0,0,200,100); // 最后去绘制执行，如果把笔触宽度写在下面，则宽度不会有变化，颜色则无所谓，总写，最后执行吧
+
+	// 绘制笔触，填充渐变
+	var gradient=ctx2.createLinearGradient(0,0,200,0);
+	gradient.addColorStop(0,"#f60");//0为开始
+	gradient.addColorStop(.5,"#f00");//.5为中间
+	gradient.addColorStop(1,"#0ff");//1为结束 范围0~1
+	ctx2.strokeStyle=gradient;
+	ctx2.lineWidth=5;
+	ctx2.strokeRect(0,0,200,100);// 最后去绘制执行，如果把笔触宽度写在下面，则宽度不会有变化，颜色则无所谓，总写，最后执行吧
+
+</script>
