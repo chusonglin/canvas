@@ -2,24 +2,18 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>矩形 fillRect 和 fillStyle 填充颜色|渐变</title>
+	<title>fillStyle 填充颜色|渐变</title>
 </head>
 <body>
-	<h3>矩形绘制</h3>
-	<p>
-		<strong>fillRect(x0,y0,x1,y1)</strong>用于绘制矩形<br>
-		x0	渐变开始点的 x 坐标<br>
-		y0	渐变开始点的 y 坐标<br>
-		x1	渐变结束点的 x 坐标<br>
-		y1	渐变结束点的 y 坐标<br>
-	</p>
-	
+	<h3>fillStyle 填充</h3>
 	<p> fillStyle有三个值可供选择【 fillStyle=color|gradient|pattern 】颜色，渐变,patter对象</p>
-	<h3>矩形，颜色为单一色调</h3>
+	<h3>单色</h3>
 	<p> <strong>fillStyle = "#f60"</strong> 属性是给绘制对象填充#f60颜色,默认值为#000000</p>
 	<canvas id="canvas1"></canvas>
-	<h3>矩形，颜色为渐变</h3>
+	<h3>渐变</h3>
 	<p>createLinearGradient() 方法创建线性的渐变对象。</p>
+	<p>addColorStop(0,color) 定义开始颜色。</p>
+	<p>addColorStop(1,color) 定义结束颜色。</p>
 	<p>
 		<strong>createLinearGradient(x0,y0,x1,y1)</strong><br>
 		x0	渐变开始点的 x 坐标<br>
