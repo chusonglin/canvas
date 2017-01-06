@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>矩形 shadowBlur 和 shadowColor 阴影范围|阴影颜色</title>
+</head>
+<body>
+	<h3>阴影绘制</h3>
+	
+	<p> shadowColor只能写color值，不能写渐变值</p>
+	<p> shadowBlur的值是一个阿拉伯数字</p>
+	<canvas id="canvas1"></canvas>
+</body>
+</html>
+<script>
+	//js获取画布对象，声明2d绘画
+	var canvas1 = document.getElementById('canvas1'); 
+	var ctx1 = canvas1.getContext('2d');
+	
+	// 绘制矩形，填充单一颜色，和阴影
+	ctx1.shadowBlur = 40;
+	ctx1.shadowColor = '#f60';
+	ctx1.fillStyle = "#f60";
+	ctx1.fillRect(50,50,200,100);
+
+</script>
