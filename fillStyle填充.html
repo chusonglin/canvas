@@ -2,15 +2,21 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>fillStyle 填充颜色|渐变</title>
+	<title>fillStyle 填充颜色 | 渐变 | 图案</title>
 </head>
 <body>
-	<h3>fillStyle 填充</h3>
-	<p> fillStyle有三个值可供选择【 fillStyle=color|gradient|pattern 】颜色，渐变,patter对象</p>
+
+	<h3>fillStyle 填充单色</h3>
+	<p> fillStyle有三个值可供选择【 fillStyle=color|gradient|pattern 】颜色, 渐变, 图案</p>
+
+	<!-- 填充单色 -->
 	<h3>单色</h3>
 	<p> <strong>fillStyle = "#f60"</strong> 属性是给绘制对象填充#f60颜色,默认值为#000000</p>
 	<canvas id="canvas1"></canvas>
+
+	<!-- 填充渐变 -->
 	<h3>渐变</h3>
+
 	<p>createLinearGradient() 方法创建线性的渐变对象。</p>
 	<p>addColorStop(0,color) 定义开始颜色。</p>
 	<p>addColorStop(1,color) 定义结束颜色。</p>
@@ -21,29 +27,60 @@
 		x1	渐变结束点的 x 坐标<br>
 		y1	渐变结束点的 y 坐标<br>
 	</p>
+
 	<canvas id="canvas2"></canvas>
+
+	<!-- 填充图案 -->
+	<h3>图案</h3>
+
+	<img src="images/lamp.jpg" id="lamp">
+	<canvas id="canvas3"></canvas>
+
+	<p>图案绘制操作</p>
+	<button onclick="draw('repeat')">重复</button> 
+	<button onclick="draw('repeat-x')">重复-x</button> 
+	<button onclick="draw('repeat-y')">重复-y</button> 
+	<button onclick="draw('no-repeat')">不重复</button>     
+
 </body>
 </html>
 <script>
-	//js获取画布对象，声明2d绘画
+	// 绘制矩形，填充单一颜色
 	var canvas1 = document.getElementById('canvas1'); 
 	var ctx1 = canvas1.getContext('2d');
-	var canvas2=document.getElementById("canvas2");
-	var ctx2=canvas2.getContext("2d");
-	
-
-
-	// 绘制矩形，填充单一颜色
 	ctx1.fillStyle = "#f60";
 	ctx1.fillRect(0,0,200,100); // 最后去绘制执行，如果把笔触宽度写在下面，则宽度不会有变化，颜色则无所谓，总写，最后执行吧
 	
 
+
+
 	// 绘制矩形，填充渐变
-	var gradient=ctx2.createLinearGradient(0,0,200,0);
+	var canvas2 = document.getElementById("canvas2");
+	var ctx2 = canvas2.getContext("2d");
+	var gradient = ctx2.createLinearGradient(0,0,200,0);
 	gradient.addColorStop(0,"#f60");//0为开始
 	gradient.addColorStop(.5,"#f00");//.5为中间
 	gradient.addColorStop(1,"#0ff");//1为结束 范围0~1
-	ctx2.fillStyle=gradient;
+	ctx2.fillStyle = gradient;
 	ctx2.fillRect(0,0,200,100);// 最后去绘制执行，如果把笔触宽度写在下面，则宽度不会有变化，颜色则无所谓，总写，最后执行吧
+
+
+
+
+	// 绘制矩形，填充图案
+	function draw(direction)
+	{
+		var canvas3 = document.getElementById("canvas3");
+		var ctx3 = canvas3.getContext("2d");
+		
+		var img = document.getElementById("lamp");      	//获取图片节点
+		var drawImg = ctx3.createPattern(img,direction);	//获取创建绘制的图案
+
+		ctx3.fillStyle = drawImg;							//填充图案
+		ctx3.clearRect(0,0,canvas3.width,canvas3.height);	//清空矩形画布
+		ctx3.fillRect(0,0,220,128);							//绘制矩形
+
+	}
+
 
 </script>
