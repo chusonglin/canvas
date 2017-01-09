@@ -9,6 +9,8 @@
 	
 	<p> shadowColor只能写color值，不能写渐变值</p>
 	<p> shadowBlur的值是一个阿拉伯数字</p>
+	<p> shadowOffsetX的值是投影位置的横坐标的值是一个阿拉伯数字</p>
+	<p> shadowOffsetY的值是投影位置的纵坐标的值是一个阿拉伯数字</p>
 	<canvas id="canvas1"></canvas>
 </body>
 </html>
@@ -19,8 +21,10 @@
 	
 	// 绘制矩形，填充单一颜色，和阴影
 	ctx1.shadowBlur = 40;
-	ctx1.shadowColor = '#f60';
+	ctx1.shadowColor = '#999';
 	ctx1.fillStyle = "#f60";
+	ctx1.shadowOffsetX=-30; // 投影位置的横坐标的值
+	ctx1.shadowOffsetY=-30; // 投影位置的纵坐标的值
 	ctx1.fillRect(50,50,200,100);
 
 </script>
