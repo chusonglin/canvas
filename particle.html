@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>粒子效果</title>
+	<style type="text/css">
+	    body {
+	      background-color: #000000;
+	      margin: 0px;
+	      overflow: hidden;
+	    }
+    </style>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	var canvas = document.createElement('canvas');
+	context = canvas.getContext('2d');
+	var canvasWidth = window.innerWidth;
+	var canvasHeight = window.innerHeight;
+	var particleArr = []; 
+	init();
+
+	function init(){
+		document.body.appendChild(canvas)
+		canvas.width = canvasWidth;
+		canvas.height = canvasHeight;
+		setInterval(loop,1000/30);
+	}
+
+	function loop(){
+		// 先清除所有粒子
+		context.fillStyle = "rgba(0,0,0,1)"
+		context.fillRect(0,0,canvasWidth,canvasHeight)
+		// 随机产生微粒
+		var particleW = canvasWidth*.5;
+		var particleH = canvasHeight*.5;
+		var particle = new Particle(particleW,particleH);
+		particle.xVel = Math.random()*4-2;
+		particleArr.push(particle);
+		// 随机产生微粒
+		for(var i = 0; i < particleArr.length;i++){
+			var particle = particleArr[i];
+			particle.render(context)
+			particle.update()
+		}	
+
+		if (particleArr.length>1000){//只保留20个粒子
+		    particleArr.shift();
+		}
+
+
+	}
+
+	function Particle(xPos,yPos){
+		this.xPos = xPos;
+		this.yPos = yPos;
+		this.yVel = -5;
+		this.xVel = 0;
+		this.gravity = .1;
+		// this.counter = 0;
+
+		this.render = function(c){
+			c.fillStyle = "rgba(255,255,255,.5)";
+			c.fillStyle = "hsl("+ Math.random()*360 +",100%,50%)";
+			c.beginPath();
+			c.arc(this.xPos,this.yPos,5,0,Math.PI*2,true);
+			c.fill();
+		}
+
+		this.update = function(){
+			this.yVel += this.gravity;
+			this.yPos += this.yVel;
+			this.xPos += this.xVel;
+			this.counter += Math.random()*360
+		}
+		
+	}
+</script>
