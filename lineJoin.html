@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lineJoin两条线相交时，创建拐角</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+
+	<h3>lineJoin 属性设置或返回所创建边角的类型，当两条线交汇时。</h3>
+	<p>注释：值 "miter" 受 miterLimit 属性的影响。</p>
+	<p>context.lineJoin="bevel|round|miter";  默认值:miter</p>
+	<p>bevel	创建斜角。</p>
+	<p>round	创建圆角。</p>
+	<p>miter	默认。创建尖角。</p>
+</body>
+</html>
+
+<script>
+	var canvas = document.getElementById('canvas');
+	canvas.width = 300;
+	canvas.height = 150;
+	var ctx = canvas.getContext('2d');
+	ctx.strokeStyle="#f60";
+	ctx.beginPath();
+	ctx.lineWidth = 1;
+	ctx.lineJoin = 'bevel';
+	ctx.moveTo(50,50);
+	ctx.lineTo(120,120);
+	ctx.lineTo(160,60);
+	ctx.lineTo(260,30);
+	ctx.lineTo(300,0);
+	ctx.stroke();
+
+</script>

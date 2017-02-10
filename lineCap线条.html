@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lineCap线条的端点样式</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<h3>lineCap 属性设置或返回线条末端线帽的样式。</h3>
+	<p>注释："round" 和 "square" 会使线条略微变长。</p>
+	<p>context.lineCap="butt|round|square"  默认值:butt</p>
+	<p>butt	默认。向线条的每个末端添加平直的边缘。</p>
+	<p>round	向线条的每个末端添加圆形线帽。</p>
+	<p>square	向线条的每个末端添加正方形线帽。</p>
+</body>
+</html>
+<script>
+	var canvas = document.getElementById('canvas');
+	canvas.width = 300;
+	canvas.height = 150;
+	var ctx = canvas.getContext('2d');
+	// 可以根据坐标点定义多条线
+	ctx.lineWidth = 10;
+	ctx.strokeStyle="#f60";
+
+	
+	// 样式round
+	ctx.beginPath();
+	ctx.lineCap="round";
+	ctx.moveTo(20,20);
+	ctx.lineTo(200,20);
+	ctx.stroke();
+
+
+	
+	// 样式round
+	ctx.beginPath();
+	ctx.lineCap="butt";
+	ctx.moveTo(40,40);
+	ctx.lineTo(200,40);
+	ctx.stroke();
+
+
+	
+	// 样式round
+	ctx.beginPath();
+	ctx.lineCap="square";
+	ctx.moveTo(60,60);
+	ctx.lineTo(200,60);
+	ctx.stroke();
+
+
+	
+</script>
