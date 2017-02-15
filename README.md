@@ -1,2 +1,2 @@
 # canvas
-learning
+canvas是html5的新标签
